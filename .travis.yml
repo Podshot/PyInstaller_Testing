@@ -24,6 +24,18 @@ script:
   - pyinstaller path_tester_file.spec
   - cd dist
   - /path_tester.app/Contents/MacOS/path_tester
-  - zip -r "build.zip" "dist/*" -x "*.DS_Store"
+  - cd ..
+  - zip -r "build.zip" "dist" -x "*.DS_Store"
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_AUTH_TOKEN
+  prerelease: true
+  file:
+#    - dist/*
+#    - mcedit-ci-osx.spec
+    - build.zip
+  file_glob: true
+  skip_cleanup: true
 
 
