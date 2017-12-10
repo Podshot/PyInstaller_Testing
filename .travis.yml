@@ -22,6 +22,7 @@ install:
 
 script:
   - pyinstaller path_tester_file.spec
+  - cd dist
   - open path_tester.app/Contents/MacOS/path_tester
   - zip -r "build.zip" "dist/*" -x "*.DS_Store"
 
