@@ -1,0 +1,28 @@
+language: generic
+os: osx
+sudo: true
+osx_image: xcode8
+
+cache:
+  directories:
+    - $HOME/Library/Caches/pip
+    - $HOME/.pip-accel
+
+before_install:
+  - brew update
+#  - brew install python2
+#  - virtualenv env -p python2
+#  - source env/bin/activate
+
+install:
+#  - pip install -U pip wheel
+#  - pip install -r requirements-osx.txt | cat
+  - pip install git+http://github.com/pyinstaller/pyinstaller
+#  - python setup.py all
+
+script:
+  - pyinstaller path_tester_file.spec
+  - open path_tester.app/Contents/MacOS/path_tester
+  - zip -r "build.zip" "dist/*" -x "*.DS_Store"
+
+
