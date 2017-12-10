@@ -15,7 +15,7 @@ before_install:
 #  - source env/bin/activate
 
 install:
-#  - pip install -U pip wheel
+  - pip install -U pip wheel
 #  - pip install -r requirements-osx.txt | cat
   - pip install git+http://github.com/pyinstaller/pyinstaller
 #  - python setup.py all
